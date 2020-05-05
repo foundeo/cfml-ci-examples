@@ -22,7 +22,7 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
     - name: cfcompile
-      uses: docker://docker.pkg.github.com/foundeo/cfml-ci-tools/cfml-ci-tools:latest
+      uses: docker://foundeo/cfml-ci-tools:latest
       with: 
         entrypoint: /opt/box/box
         args: version 
