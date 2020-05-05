@@ -25,5 +25,5 @@ jobs:
       uses: docker://foundeo/cfml-ci-tools:latest
       with: 
         entrypoint: /opt/box/box
-        args: cfcompile sourcePath=$GITHUB_WORKSPACE destPath=/tmp
+        args: cfcompile sourcePath=/github/workspace destPath=/tmp
         
