@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+    calc_app:
+        build: app/
+        #image: foundeo/minibox:latest
+        #command: ["box", "server", "start", "port=8847", "cfengine=lucee@5.2.8", "--console"]
+        ports:
+            - "8855:8855"
+        
