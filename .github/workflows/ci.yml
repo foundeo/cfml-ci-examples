@@ -13,7 +13,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build:
+  test:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -22,7 +22,7 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
     - name: cfcompile
-      uses: docker://foundeo/minibox:latest
+      uses: docker://docker.pkg.github.com/foundeo/cfml-ci-tools/cfml-ci-tools:latest
       with: 
         entrypoint: /opt/box/box
         args: version 
