@@ -1,0 +1,27 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Curl
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  curl:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Start Up
+      run: docker-compose up &
+
+    - name: Wait for startup 
+      run: tests/curl/server-up.sh
+    
+    - name: Run a test 
+      run: tests/curl/curl.sh
