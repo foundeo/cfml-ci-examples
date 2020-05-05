@@ -24,5 +24,6 @@ jobs:
     - name: cfcompile
       uses: docker://foundeo/minibox:latest
       with: 
-        args: install cfml-compiler
+        entrypoint: /opt/box/box
+        args: version 
         
