@@ -18,7 +18,7 @@
                 </div>
             </form>
             
-            <footer class="mt-4">&copy; <a href="https://foundeo.com/">Foundeo Inc.</a> #year(now())#</footer>
+            <footer class="mt-4">&copy; <a href="https://foundeo.com/">Foundeo Inc.</a> <cfoutput>#year(now())#</cfoutput></footer>
 
             <script>
                 document.addEventListener('click', function (event) {

@@ -1,1 +1,3 @@
 tests/testbox
+node_modules/
+tests/puppeteer/package-lock.json

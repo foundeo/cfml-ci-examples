@@ -1,3 +1,4 @@
+<!---
 <cfquery>
     SELECT * FROM news
     WHERE id = #url.id#
@@ -6,3 +7,4 @@
 <cfoutput>
     Hi #evaluate("url.#name#")#
 </cfoutput>
+--->
