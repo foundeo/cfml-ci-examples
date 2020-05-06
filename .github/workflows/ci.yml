@@ -16,7 +16,7 @@ jobs:
   test:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
+    
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -40,10 +40,16 @@ jobs:
     
     - name: Run Postman Newman Tests
       run: npx newman run tests/newman/ci-example.postman_collection.json
+  testbox:
+    runs-on: ubuntu-latest
     
-    - name: Run Testbox
-      uses: docker://foundeo/cfml-ci-tools:latest
-      with:
-        entrypoint: /opt/box/box
-        args: testbox run
+    container:
+      image: foundeo/cfml-ci-tools:latest
+    steps:  
+    - uses: actions/checkout@v2
+    - name: Start a server
+      run: box server start
+    - name: Install dependencies
+      run: box install
+      
         
