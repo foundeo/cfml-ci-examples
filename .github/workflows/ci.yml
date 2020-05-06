@@ -42,12 +42,11 @@ jobs:
       run: npx newman run tests/newman/ci-example.postman_collection.json
   testbox:
     runs-on: ubuntu-latest
-    
+    env:
+        LUCEE_EXTENSIONS: "37C61C0A-5D7E-4256-8572639BE0CF5838"
     container:
       image: foundeo/cfml-ci-tools:latest
     steps:  
-    - env:
-        LUCEE_EXTENSIONS: "37C61C0A-5D7E-4256-8572639BE0CF5838"
     - uses: actions/checkout@v2
     - name: Start a server
       run: box server start cfengine=lucee@5.2.9.31
