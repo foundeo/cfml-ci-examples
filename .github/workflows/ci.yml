@@ -40,4 +40,10 @@ jobs:
     
     - name: Run Postman Newman Tests
       run: npx newman run tests/newman/ci-example.postman_collection.json
+    
+    - name: Run Testbox
+      uses: docker://foundeo/cfml-ci-tools:latest
+      with:
+        entrypoint: /opt/box/box
+        args: testbox run
         
