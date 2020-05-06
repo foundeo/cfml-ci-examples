@@ -29,4 +29,6 @@ jobs:
       #with: 
       #  entrypoint: /opt/box/box
       #  args: cfcompile sourcePath=/github/workspace destPath=/tmp
+    - name: Run Postman Newman Tests
+      run: npx newman run tests/newman/ci-example.postman_collection.json
         
