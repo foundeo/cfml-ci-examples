@@ -2,13 +2,11 @@
 
 name: CI
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
+# Controls when the action will run. 
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
+
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -50,6 +48,12 @@ jobs:
     
     - name: Run Postman Newman Tests
       run: npx newman run tests/newman/ci-example.postman_collection.json
+    
+    - name: Run Puppeteer
+      run: |
+        cd tests/puppeteer
+        npm install
+        node test.js
       
   testbox:
     runs-on: ubuntu-latest
