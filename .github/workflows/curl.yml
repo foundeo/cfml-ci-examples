@@ -6,9 +6,9 @@ name: Curl
 # events but only for the master branch
 on:
   push:
-    branches: [ master ]
+    branches: [ curl ]
   pull_request:
-    branches: [ master ]
+    branches: [ curl ]
 
 jobs:
   curl:
@@ -23,5 +23,8 @@ jobs:
     - name: Wait for startup 
       run: tests/curl/server-up.sh
     
-    - name: Run a test 
+    - name: Run a curl test 
       run: tests/curl/curl.sh
+      
+    - name: Run a cfm test via curl
+      run: tests/curl/cfm.sh
