@@ -2,7 +2,9 @@ FROM foundeo/minibox:latest
 
 COPY ./ /app/
 
-COPY ../tests/ /app/tests/
+RUN cd /app/
+
+RUN box install
 
 EXPOSE 8855
 
