@@ -51,5 +51,7 @@ jobs:
       run: box server start
     - name: Install dependencies
       run: box install
+    - name: Run TestBox Tests
+      run: box testbox run
       
         
