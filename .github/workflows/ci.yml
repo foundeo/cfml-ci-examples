@@ -21,6 +21,15 @@ jobs:
       with:
         cfengine: lucee@5.2.9.31
   
+  fixinator:
+    runs-on: ubuntu-latest
+    steps: 
+    - uses: actions/checkout@v2
+    - name: Fixinator Security Scan 
+      uses: foundeo/fixinator-github-action@master
+      with:
+        fixinator_api_key: ${{ secrets.FIXINATOR_API_KEY }}
+  
   test-api:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
