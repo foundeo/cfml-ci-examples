@@ -29,6 +29,15 @@ jobs:
       #with: 
       #  entrypoint: /opt/box/box
       #  args: cfcompile sourcePath=/github/workspace destPath=/tmp
+    - name: Start Up
+      run: docker-compose up &
+
+    - name: Wait for startup 
+      run: tests/curl/server-up.sh
+    
+    - name: Run curl test 
+      run: tests/curl/curl.sh
+    
     - name: Run Postman Newman Tests
       run: npx newman run tests/newman/ci-example.postman_collection.json
         
