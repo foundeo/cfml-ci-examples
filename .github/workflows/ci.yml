@@ -12,8 +12,16 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  test:
+  cfcompile:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: cfcompile
+      uses: foundeo/cfml-compiler-action@master
+      with:
+        cfengine: lucee@5.2.9.31
+  
+  test-api:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     
@@ -21,14 +29,7 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-    - name: cfcompile
-      uses: foundeo/cfml-compiler-action@master
-      with:
-        cfengine: lucee@5.2.9.31
-      #uses: docker://foundeo/cfml-ci-tools:latest
-      #with: 
-      #  entrypoint: /opt/box/box
-      #  args: cfcompile sourcePath=/github/workspace destPath=/tmp
+    
     - name: Start Up
       run: docker-compose up &
 
@@ -40,8 +41,10 @@ jobs:
     
     - name: Run Postman Newman Tests
       run: npx newman run tests/newman/ci-example.postman_collection.json
+      
   testbox:
     runs-on: ubuntu-latest
+    # testbox uses encodeForHTML so we need that extension installed
     env:
         LUCEE_EXTENSIONS: "37C61C0A-5D7E-4256-8572639BE0CF5838"
     container:
