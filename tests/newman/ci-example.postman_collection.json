@@ -1,0 +1,84 @@
+{
+	"info": {
+		"_postman_id": "734d76f6-b217-4dfb-b4c7-d291862aac6d",
+		"name": "CI Examples",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Test Add",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d50a1942-b0f2-4022-92a4-18e2456d9510",
+						"exec": [
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"pm.test(\"Content-Type is application.json\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\", \"application/json;charset=UTF-8\");",
+							"});",
+							"",
+							"pm.test(\"Response is valid JSON\", function () {",
+							"    pm.response.to.be.json",
+							"});",
+							"",
+							"",
+							"pm.test(\"Result to be 8\", function () {",
+							"    var answer = pm.response.text();",
+							"    pm.expect(answer).to.eql(\"8\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8855/services/calc.cfc?method=add&x=5&y=3&returnformat=json",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8855",
+					"path": [
+						"services",
+						"calc.cfc"
+					],
+					"query": [
+						{
+							"key": "method",
+							"value": "add"
+						},
+						{
+							"key": "x",
+							"value": "5"
+						},
+						{
+							"key": "y",
+							"value": "3"
+						},
+						{
+							"key": "returnformat",
+							"value": "json"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
