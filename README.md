@@ -6,7 +6,7 @@ Examples for Continuous Integration with CFML by Pete Freitag / [Foundeo Inc.](h
 
 ## Tools Used 
 
-For the kitchen sink CI example, take a look at: `[.github/workflows/ci.yml](.github/workflows/ci.yml)`
+For examples of all these tools running in GitHub Actions, take a look at: [.github/workflows/ci.yml](.github/workflows/ci.yml) and click on the _Actions_ tab of this repository.
 
 * [Fixinator](https://fixinator.app/) - Scan CFML Code for Security Issues
 * [CFML Compiler](https://github.com/foundeo/cfml-compiler) - Compiles CFML Code, fails on compilation errors
