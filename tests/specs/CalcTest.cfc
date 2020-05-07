@@ -23,7 +23,7 @@ component extends="testbox.system.BaseSpec" {
 			it("Should not be able to add bacon + lettuce", function() {
                 expect(function() {
                     var calc = new services.calc();
-                    calc.add("bacon","lettuce")
+                    calc.add("bacon","lettuce");
                 }).toThrow();
             });
 		});
