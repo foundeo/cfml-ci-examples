@@ -2,6 +2,5 @@
 
 ![CI](https://github.com/foundeo/cfml-ci-examples/workflows/CI/badge.svg)
 
-Examples for Continuous Integration with CFML
+Examples for Continuous Integration with CFML by Pete Freitag / [Foundeo Inc.](https://foundeo.com/)
 
-Try to break, textlint, by adding, way too many, commas in a sentance, there.
