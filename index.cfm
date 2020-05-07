@@ -1,11 +1,13 @@
 <!doctype html>
 <html>
     <head>
+        <title>Calc</title>
         <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/journal/bootstrap.min.css" rel="stylesheet" integrity="sha384-0d2eTc91EqtDkt3Y50+J9rW3tCXJWw6/lDgf1QNHLlV0fadTyvcA120WPsSOlwga" crossorigin="anonymous">
+        <link rel="shortcut icon" href="/calculator.svg" type="image/svg">
     </head>
     <body>
-        <div class="container">
-            <h1>Example Calculator Site</h1>
+        <div class="container mt-4">
+            <h1><img src="/calculator.svg" width="40" height="40"> Example Calculator Site</h1>
             <div class="jumbotron"><div class="lead">All the latest calculations</div></div>
             
             <form>
