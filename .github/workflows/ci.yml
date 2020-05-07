@@ -83,7 +83,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Text Lint
       run: |
-        npm install -g textlint-rule-max-comma textlint
+        sudo npm install -g textlint-rule-max-comma textlint
         textlint --rule max-comma README.md
       
         
