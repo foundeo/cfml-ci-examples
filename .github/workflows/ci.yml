@@ -55,6 +55,11 @@ jobs:
         sudo apt-get install -y libgbm-dev
         npm install
         node test.js
+    - name: Save Screenshot
+      uses: actions/upload-artifact@v2
+      with:
+        path: tests/puppeteer/screenshot.png
+
       
   testbox:
     runs-on: ubuntu-latest
