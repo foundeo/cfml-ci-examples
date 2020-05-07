@@ -94,7 +94,7 @@ jobs:
       uses: docker://foundeo/cfml-ci-tools:latest
       with:
         entrypoint: /opt/box/box
-        args: cflint reportLevel=WARNING
+        args: cflint reportLevel=ERROR
         
   codechecker:
     runs-on: ubuntu-latest
