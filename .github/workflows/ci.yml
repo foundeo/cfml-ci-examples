@@ -84,6 +84,6 @@ jobs:
     - name: Text Lint
       run: |
         npm install textlint-rule-max-comma
-        npx textlint README.md
+        npx textlint --rule max-comma README.md
       
         
