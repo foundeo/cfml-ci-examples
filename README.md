@@ -2,4 +2,4 @@
 
 Examples for Continuous Integration with CFML
 
-Hello
+Hello trigger it
