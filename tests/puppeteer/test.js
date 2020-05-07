@@ -1,6 +1,5 @@
 const puppeteer = require('puppeteer');
 
-console.log("Starting up");
 
 (async() => {
 
@@ -17,22 +16,25 @@ console.log("Starting up");
 
     setTimeout(async()=> {
         const answer = await page.$eval('#z',  el => { return el.value } );
+
+        await page.screenshot({path: 'screenshot.png'});
         if (answer == "8") {
             console.log("Value Was 8");
             await browser.close();
-            process.exit(1);
+            process.exit(0);
         } else {
             console.log("Value was not 8, it was: " + answer);
             await browser.close();
-            process.exit(0);
+            process.exit(1);
         }
-            
         
     }, 200);
     
     setTimeout(()=> {
+        console.log("15 Second Timeout Reached");
         browser.close();
-    }, 5000);
+        process.exit(1);
+    }, 15000);
 
     
     
