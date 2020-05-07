@@ -52,6 +52,7 @@ jobs:
     - name: Run Puppeteer
       run: |
         cd tests/puppeteer
+        sudo apt-get install -y libgbm-dev
         npm install
         node test.js
       
