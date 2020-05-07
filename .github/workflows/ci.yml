@@ -86,4 +86,23 @@ jobs:
         sudo npm install -g textlint-rule-max-comma textlint
         textlint --rule max-comma README.md
       
+  cflint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: cfcompile	    
+      uses: docker://foundeo/cfml-ci-tools:latest
+      with:
+        entrypoint: /opt/box/box
+        args: cflint reportLevel=WARNING
         
+  codechecker:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: cfcompile	    
+      uses: docker://foundeo/cfml-ci-tools:latest
+      with:
+        entrypoint: /opt/box/box
+        args: codechecker run
+
