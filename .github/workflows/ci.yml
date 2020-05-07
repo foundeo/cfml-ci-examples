@@ -76,5 +76,13 @@ jobs:
       run: box install
     - name: Run TestBox Tests
       run: box testbox run
+
+  textlint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Text Lint
+      run: |
+        npx textlint README.md
       
         
