@@ -90,7 +90,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: cfcompile	    
+    - name: Run CFLint	    
       uses: docker://foundeo/cfml-ci-tools:latest
       with:
         entrypoint: /opt/box/box
@@ -100,7 +100,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: cfcompile	    
+    - name: Run CodeChecker	    
       uses: docker://foundeo/cfml-ci-tools:latest
       with:
         entrypoint: /opt/box/box
