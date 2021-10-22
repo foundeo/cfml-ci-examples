@@ -18,8 +18,11 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/foundeo/cfml-ci-tools/cfml-ci-tools:latest
+    
     steps:
     - name: Banner
       run: echo "Running Fixinator with confidence=${{ github.event.inputs.fixinator_confidence }}"
     - name: Run Fixinator
       run: box fixinator confidence=${{ github.event.inputs.fixinator_confidence }}
+    - with:
+        fixinator_api_key: ${{ secrets.FIXINATOR_API_KEY }}
