@@ -1,0 +1,19 @@
+name: Run Fixinator Monthly
+
+# Run at 9:30 UTC on the First of every month
+on:
+  schedule:
+    - cron: '30 9 1 * *'
+
+jobs:
+  fixinator:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/foundeo/cfml-ci-tools/cfml-ci-tools:latest
+    
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run Fixinator
+      run: box fixinator
+      env:
+        FIXINATOR_API_KEY: ${{ secrets.FIXINATOR_API_KEY }}
