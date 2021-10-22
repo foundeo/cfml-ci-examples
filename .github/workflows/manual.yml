@@ -17,7 +17,7 @@ jobs:
   fixinator:
     runs-on: ubuntu-latest
     container:
-      image: docker.pkg.github.com/foundeo/cfml-ci-tools/cfml-ci-tools:latest
+      image: ghcr.io/foundeo/cfml-ci-tools/cfml-ci-tools:latest
     steps:
     - name: Banner
       run: echo "Running Fixinator with confidence=${{ github.event.inputs.fixinator_confidence }}"
