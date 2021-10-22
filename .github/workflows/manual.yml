@@ -25,5 +25,5 @@ jobs:
     - name: Run Fixinator
       run: box fixinator confidence=${{ github.event.inputs.fixinator_confidence }}
       env:
-        fixinator_api_key: ${{ secrets.FIXINATOR_API_KEY }}
+        FIXINATOR_API_KEY: ${{ secrets.FIXINATOR_API_KEY }}
     
