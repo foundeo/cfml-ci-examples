@@ -20,8 +20,9 @@ jobs:
       image: ghcr.io/foundeo/cfml-ci-tools/cfml-ci-tools:latest
     
     steps:
+    - uses: actions/checkout@v2
     - name: Banner
-      run: echo "Running Fixinator with confidence=${{ github.event.inputs.fixinator_confidence }}"
+      run: ls
     - name: Run Fixinator
       run: box fixinator confidence=${{ github.event.inputs.fixinator_confidence }}
       env:
