@@ -1,0 +1,21 @@
+# This is a basic workflow that is manually triggered
+
+name: Hello Manual
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+    inputs:
+      your_name:
+        description: 'What is your name?'
+        default: 'Pete'
+        required: true
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Say Hello
+      run: echo  Hello ${{ github.event.inputs.fixinator_confidence }}
