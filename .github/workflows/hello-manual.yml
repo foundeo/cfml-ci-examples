@@ -18,4 +18,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Say Hello
-      run: echo  Hello ${{ github.event.inputs.fixinator_confidence }}
+      run: echo  Hello ${{ github.event.inputs.your_name }}
