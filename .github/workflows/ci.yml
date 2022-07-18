@@ -47,6 +47,6 @@ jobs:
       uses: docker://foundeo/cfml-ci-tools:latest
       with:
         entrypoint: /opt/box/box
-        args: codechecker run
+        args: codechecker run --verbose
 
   
