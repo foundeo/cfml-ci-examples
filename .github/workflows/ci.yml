@@ -28,64 +28,7 @@ jobs:
       with:
         fixinator_api_key: ${{ secrets.FIXINATOR_API_KEY }}
   
-  test-api:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-    
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
-    
-    - name: Start Up
-      run: docker-compose up &
-
-    - name: Wait for startup 
-      run: tests/curl/server-up.sh
-    
-    - name: Run curl test 
-      run: tests/curl/curl.sh
-    
-    - name: Run Postman Newman Tests
-      run: npx newman run tests/newman/ci-example.postman_collection.json
-    
-    - name: Run Puppeteer
-      run: |
-        cd tests/puppeteer
-        sudo apt-get install -y libgbm-dev
-        npm install
-        node test.js
-    - name: Save Screenshot
-      uses: actions/upload-artifact@v2
-      with:
-        path: tests/puppeteer/screenshot.png
-
-      
-  testbox:
-    runs-on: ubuntu-latest
-    # testbox uses encodeForHTML so we need that extension installed
-    env:
-        LUCEE_EXTENSIONS: "37C61C0A-5D7E-4256-8572639BE0CF5838"
-    container:
-      image: foundeo/cfml-ci-tools:latest
-    steps:  
-    - uses: actions/checkout@v2
-    - name: Start a server
-      run: box server start cfengine=lucee@5.2.9.31
-    - name: Install dependencies
-      run: box install
-    - name: Run TestBox Tests
-      run: box testbox run
-
-  textlint:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Text Lint
-      run: |
-        sudo npm install -g textlint-rule-max-comma textlint
-        textlint --rule max-comma README.md
-      
+  
   cflint:
     runs-on: ubuntu-latest
     steps:
@@ -106,27 +49,4 @@ jobs:
         entrypoint: /opt/box/box
         args: codechecker run
 
-  docker:
-    # Ensure test jobs pass before pushing image.
-    needs: [cfcompile, fixinator, test-api, testbox] 
-    env:
-      IMAGE_NAME: cfml-ci-examples 
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push'
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Build image
-        run: docker build . --file Dockerfile --tag $IMAGE_NAME
-
-      - name: Log into registry
-        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
-
-      - name: Push image
-        run: |
-          IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$IMAGE_NAME
-          VERSION=latest
-          docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
-          docker push $IMAGE_ID:$VERSION
-
+  
