@@ -26,5 +26,5 @@ jobs:
         protein: ["Chicken", "Beef", "Tofu"]
         side: ["Rice","Fries","Salad"]
     steps:
-      - name: Dinner
+    - name: Dinner
       run: echo "${{ matrix.protein }} with ${{ matrix.side }}"
