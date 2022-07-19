@@ -1,0 +1,20 @@
+name: Compile Matrix
+
+on:
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  
+
+jobs:
+  cfcompile:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        cfengine: ["lucee@5.3.9.141", "lucee@5.2.9.31"]
+    steps:
+    - uses: actions/checkout@v2
+    - name: cfcompile
+      uses: foundeo/cfml-compiler-action@master
+      with:
+        cfengine: ${{ matrix.cfengine }}

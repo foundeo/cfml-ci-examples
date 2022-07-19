@@ -104,9 +104,19 @@ jobs:
         entrypoint: /opt/box/box
         args: codechecker run
 
+  friday:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run Friday Check	    
+      uses: docker://foundeo/cfml-ci-tools:latest
+      with:
+        entrypoint: /opt/box/box
+        args: task run taskFile=tests/task-runners/friday.cfc
+
   docker:
     # Ensure test jobs pass before pushing image.
-    needs: [cfcompile, fixinator, test-api, testbox] 
+    needs: [cfcompile, fixinator, test-api, testbox, friday] 
     env:
       IMAGE_NAME: cfml-ci-examples 
     runs-on: ubuntu-latest
