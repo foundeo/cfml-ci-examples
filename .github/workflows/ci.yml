@@ -12,12 +12,18 @@ on:
 jobs:
   cfcompile:
     runs-on: ubuntu-latest
+    container:
+      image: adobecoldfusion/coldfusion2021:2021.0.4
+    env:
+      acceptEULA: YES
     steps:
-    - uses: actions/checkout@v2
-    - name: cfcompile
-      uses: foundeo/cfml-compiler-action@master
-      with:
-        cfengine: lucee@5.2.9.31
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      # Runs the cfcompile command inside the docker container
+      - name: Compile CFML
+        run: /opt/coldfusion/cfusion/bin/cfcompile.sh -cfruntimeuser root -webroot $GITHUB_WORKSPACE -dir $GITHUB_WORKSPACE
+          
   
   fixinator:
     runs-on: ubuntu-latest
