@@ -18,3 +18,13 @@ jobs:
       uses: foundeo/cfml-compiler-action@master
       with:
         cfengine: ${{ matrix.cfengine }}
+
+  chefmatrix:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        protein: ["Chicken", "Beef", "Tofu"]
+        side: ["Rice","Fries","Salad"]
+    steps:
+      - name: Dinner
+      run: echo "${{ matrix.protein }} with ${{ matrix.side }}"
