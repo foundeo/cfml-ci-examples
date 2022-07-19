@@ -1,4 +1,4 @@
 <cfquery>
     SELECT * FROM table
-    WHERE id = #url.id#
+    WHERE id = <cfqueryparam value="#url.id#" cfsqltype="cf_sql_integer">
 </cfquery>
