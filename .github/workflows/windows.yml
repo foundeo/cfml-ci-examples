@@ -1,0 +1,15 @@
+# This is a basic workflow that is manually triggered
+
+name: Windows Example
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  workflow_dispatch:
+
+jobs:
+  hello:
+    runs-on: windows-latest
+    steps:
+    - name: Output System Info
+      run: systeminfo.exe

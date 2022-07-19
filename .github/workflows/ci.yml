@@ -39,13 +39,13 @@ jobs:
   
   cflint:
     runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/foundeo/cfml-ci-tools/cfml-ci-tools:latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Run CFLint	    
-      uses: docker://foundeo/cfml-ci-tools:latest
-      with:
-        entrypoint: /opt/box/box
-        args: cflint reportLevel=ERROR
+      run: box cflint reportLevel=ERROR
+      
         
   codechecker:
     runs-on: ubuntu-latest
