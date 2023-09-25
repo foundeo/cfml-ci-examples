@@ -10,8 +10,8 @@ jobs:
   cfcompile:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: cfcompile
       uses: foundeo/cfml-compiler-action@master
       with:
-        cfengine: lucee@5.2.9.31
+        cfengine: lucee@5.4.3.2

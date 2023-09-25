@@ -11,9 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        cfengine: ["lucee@5.3.9.141", "lucee@5.2.9.31"]
+        cfengine: ["lucee@5.4.3.2", "lucee@5.3.12.1"]
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: cfcompile
       uses: foundeo/cfml-compiler-action@master
       with:

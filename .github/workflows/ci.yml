@@ -15,7 +15,7 @@ jobs:
   cfcompile:
     runs-on: ubuntu-latest
     container:
-      image: adobecoldfusion/coldfusion2021:2021.0.4
+      image: adobecoldfusion/coldfusion2021:2021.0.10
     env:
       acceptEULA: YES
     steps:
@@ -30,7 +30,7 @@ jobs:
   fixinator:
     runs-on: ubuntu-latest
     steps: 
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Fixinator Security Scan 
       uses: foundeo/fixinator-github-action@master
       with:
@@ -50,7 +50,7 @@ jobs:
   codechecker:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Run CodeChecker	    
       uses: docker://foundeo/cfml-ci-tools:latest
       with:

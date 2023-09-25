@@ -11,16 +11,16 @@ jobs:
   cfcompile:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: cfcompile
       uses: foundeo/cfml-compiler-action@master
       with:
-        cfengine: lucee@5.2.9.31
+        cfengine: lucee@5.4.3.2
   
   fixinator:
     runs-on: ubuntu-latest
     steps: 
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Fixinator Security Scan 
       uses: foundeo/fixinator-github-action@master
       with:
@@ -33,7 +33,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     
     - name: Start Up
       run: docker-compose up &
@@ -67,7 +67,7 @@ jobs:
     container:
       image: foundeo/cfml-ci-tools:latest
     steps:  
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Start a server
       run: box server start cfengine=lucee@5.2.9.31
     - name: Install dependencies
@@ -78,7 +78,7 @@ jobs:
   textlint:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Text Lint
       run: |
         sudo npm install -g textlint-rule-max-comma textlint
@@ -87,7 +87,7 @@ jobs:
   cflint:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Run CFLint	    
       uses: docker://foundeo/cfml-ci-tools:latest
       with:
@@ -97,7 +97,7 @@ jobs:
   codechecker:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Run CodeChecker	    
       uses: docker://foundeo/cfml-ci-tools:latest
       with:
@@ -107,7 +107,7 @@ jobs:
   friday:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Run Friday Check	    
       uses: docker://foundeo/cfml-ci-tools:latest
       with:
@@ -123,7 +123,7 @@ jobs:
     if: github.event_name == 'push'
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Build image
         run: docker build . --file Dockerfile --tag $IMAGE_NAME
