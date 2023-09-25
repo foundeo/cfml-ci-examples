@@ -10,7 +10,7 @@ jobs:
   cfcompile:
     runs-on: ubuntu-latest
     container:
-      image: adobecoldfusion/coldfusion2021:2021.0.4
+      image: adobecoldfusion/coldfusion2021:2021.0.10
     env:
       acceptEULA: YES
     steps:
