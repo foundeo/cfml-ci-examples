@@ -1,0 +1,38 @@
+# This is a basic workflow that is manually triggered
+
+name: Screenshot
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  workflow_dispatch:
+
+jobs:
+    screenshot:
+        # The type of runner that the job will run on
+        runs-on: ubuntu-latest
+        
+        # Steps represent a sequence of tasks that will be executed as part of the job
+        steps:
+        # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+        - uses: actions/checkout@v3
+        
+        - name: Start Up
+          run: docker-compose up &
+    
+        - name: Wait for startup 
+          run: tests/curl/server-up.sh
+        
+        - name: Run Puppeteer
+          run: |
+            cd tests/puppeteer
+            sudo apt-get install -y libgbm-dev
+            npm install
+            echo Running test
+            node test.js
+            cd ../../
+        - name: Save Screenshot
+          uses: actions/upload-artifact@v3
+          with:
+            path: tests/puppeteer/screenshot.png
+    
