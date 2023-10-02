@@ -54,7 +54,7 @@ jobs:
         npm install
         node test.js
     - name: Save Screenshot
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         path: tests/puppeteer/screenshot.png
 
