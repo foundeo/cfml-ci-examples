@@ -1,6 +1,6 @@
 {
     "name": "cfml-ci-puppeteer",
     "dependencies": {
-        "puppeteer": "^3.0.0"
+        "puppeteer": "^21.3.6"
     }
 }

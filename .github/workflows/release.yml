@@ -52,6 +52,7 @@ jobs:
         cd tests/puppeteer
         sudo apt-get install -y libgbm-dev
         npm install
+        echo Running test
         node test.js
     - name: Save Screenshot
       uses: actions/upload-artifact@v3
