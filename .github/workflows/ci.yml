@@ -20,7 +20,7 @@ jobs:
       acceptEULA: YES
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # Runs the cfcompile command inside the docker container
       - name: Compile CFML
@@ -30,7 +30,7 @@ jobs:
   fixinator:
     runs-on: ubuntu-latest
     steps: 
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Fixinator Security Scan 
       uses: foundeo/fixinator-github-action@master
       with:
@@ -42,7 +42,7 @@ jobs:
     container:
       image: ghcr.io/foundeo/cfml-ci-tools/cfml-ci-tools:latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Run CFLint	    
       run: box cflint reportLevel=ERROR
       
@@ -50,7 +50,7 @@ jobs:
   codechecker:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Run CodeChecker	    
       uses: docker://foundeo/cfml-ci-tools:latest
       with:

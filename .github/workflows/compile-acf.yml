@@ -15,7 +15,7 @@ jobs:
       acceptEULA: YES
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # Runs the cfcompile command inside the docker container
       - name: Compile CFML

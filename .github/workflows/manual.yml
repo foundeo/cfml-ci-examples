@@ -9,7 +9,7 @@ on:
     # Inputs the workflow accepts.
     inputs:
       fixinator_confidence:
-        description: 'The confidence level for fixinator to run at, optiosn are `high`, `medium`, or `low`'
+        description: 'The confidence level for fixinator to run at, options are `high`, `medium`, or `low`'
         default: 'high'
         required: true
 
@@ -20,7 +20,7 @@ jobs:
       image: ghcr.io/foundeo/cfml-ci-tools/cfml-ci-tools:latest
     
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Banner
       run: ls
     - name: Run Fixinator

@@ -13,7 +13,7 @@ jobs:
       matrix:
         cfengine: ["lucee@5.4.3.2", "lucee@5.3.12.1"]
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: cfcompile
       uses: foundeo/cfml-compiler-action@master
       with:
