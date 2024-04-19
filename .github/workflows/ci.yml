@@ -40,7 +40,7 @@ jobs:
   cflint:
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/foundeo/cfml-ci-tools/cfml-ci-tools:latest
+      image: ghcr.io/foundeo/cfml-ci-tools/cfml-ci-tools:v1.0.15
     steps:
     - uses: actions/checkout@v4
     - name: Run CFLint	    
@@ -52,7 +52,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Run CodeChecker	    
-      uses: docker://foundeo/cfml-ci-tools:latest
+      uses: docker://foundeo/cfml-ci-tools:v1.0.15
       with:
         entrypoint: /opt/box/box
         args: codechecker run --verbose

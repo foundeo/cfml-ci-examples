@@ -17,7 +17,7 @@ jobs:
   fixinator:
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/foundeo/cfml-ci-tools/cfml-ci-tools:latest
+      image: ghcr.io/foundeo/cfml-ci-tools/cfml-ci-tools:v1.0.15
     
     steps:
     - uses: actions/checkout@v4
