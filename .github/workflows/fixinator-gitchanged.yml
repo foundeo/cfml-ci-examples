@@ -21,8 +21,10 @@ jobs:
     
     steps:
     - uses: actions/checkout@v4
-    - name: Banner
-      run: ls
+    - name: Dir Listing
+      run: ls -la
+    - name: Current Dir
+      run: pwd
     - name: Run Fixinator
       run: box fixinator confidence=${{ github.event.inputs.fixinator_confidence }} gitChanged=true
       env:
